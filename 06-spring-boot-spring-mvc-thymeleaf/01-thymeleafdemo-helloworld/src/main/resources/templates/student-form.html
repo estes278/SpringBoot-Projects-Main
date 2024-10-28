@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Registration Form</title>
+</head>
+<body>
+
+<h3>Student Registration Form</h3>
+
+<!-- For th:object="${student} - the "student" part must match the name
+of the model attribute that we defined in our controller -->
+<form th:action="@{/processStudentForm}" th:object="${student}" method="POST">
+
+    <!-- The syntax *{firstName} is shorthand for ${student.firstName}
+    We can make this reference since we're inside the "form" tag and we've
+    already declared that we are referencing the student attribute-->
+    First Name: <input type="text" th:field="*{firstName}"/>
+
+    <br><br>
+
+    Last Name: <input type="text" th:field="*{lastName}"/>
+
+    <br><br>
+
+    Country:
+
+    <select th:field="*{country}">
+       <!-- Here we are actually using a foreach loop to loop over each of the countries
+       in our "countries" list from app.properties which was injected into StudentController -->
+        <option th:each="tempCountry : ${countries}" th:value="${tempCountry}"
+                th:text="${tempCountry}" />
+    </select>
+
+    <br><br>
+
+    Favorite Hockey Team:
+
+    <input type="radio" th:field="*{team}" th:each="tempTeam : ${teams}"
+           th:value="${tempTeam}" th:text="${tempTeam}" />
+    <br><br>
+
+    Favorite Movie Genre:
+
+    <input type="checkbox" th:field="*{movieGenres}" th:each="tempGenre : ${genres}"
+           th:value="${tempGenre}" th:text="${tempGenre}" />
+
+    <br><br>
+
+    <input type="submit" value="Submit" />
+
+
+</form>
+
+</body>
+</html>

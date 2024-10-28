@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+You have created an error. Very bad man.
+
+<!-- Add a logout button. Must be done in a form so that it can be submitted via a POST method -->
+
+<br><br>
+<hr>
+<form action="#" th:action="@{/logout}" method="post">
+    <input type="submit" value="Logout" />
+</form>
+</body>
+</html>

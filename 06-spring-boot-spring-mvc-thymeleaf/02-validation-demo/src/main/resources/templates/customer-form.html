@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Form</title>
+    <style>
+        .error {color:red;
+                font-weight:bold;}
+    </style>
+</head>
+<body>
+
+<i>Fil out the form. Anything with an Asterisk * is required and must be filled.</i>
+<br><br>
+
+<!-- Model attribute name MUST match object name. In this case, "customer" -->
+<form th:action="@{/processForm}" th:object="${customer}" method="post">
+
+
+    <!-- Fields should match the variable names in customer class -->
+    First Name: <input type="text" th:field="*{firstName}" />
+
+    <br><br>
+
+    Last Name (*) : <input type="text" th:field="*{lastName}" />
+
+    <!-- Add error message (if present) -->
+    <span th:if="${#fields.hasErrors('lastName')}"
+          th:errors="*{lastName}"
+          class="error" />
+    <!-- class = the name of the CSS style we defined in the header up top of this file -->
+
+    <br><br>
+
+    Free passes: <input type="text" th:field="*{freePasses}" />
+    <!-- Add error message (if present) -->
+    <span th:if="${#fields.hasErrors('freePasses')}"
+          th:errors="*{freePasses}"
+          class="error" />
+    <br><br>
+
+    Zip Code: <input type="text" th:field="*{zipCode}" />
+    <!-- Add error message (if present) -->
+    <span th:if="${#fields.hasErrors('zipCode')}"
+          th:errors="*{zipCode}"
+          class="error" />
+    <br><br>
+
+    CourseCode: <input type="text" th:field="*{courseCode}" />
+    <!-- Add error message (if present) -->
+    <span th:if="${#fields.hasErrors('courseCode')}"
+          th:errors="*{courseCode}"
+          class="error" />
+    <br><br>
+
+    <input type="submit" value="Submit" />
+
+</form>
+
+
+</body>
+</html>
