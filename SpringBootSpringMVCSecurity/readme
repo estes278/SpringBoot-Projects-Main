@@ -1,0 +1,8 @@
+Now that we’ve built a basic MVC structure for our application, we’ll see how to implement Spring Security in conjunction with it. The first step we took was to restrict access based on Roles. Spring supports this through the use of the .requestMatchers("/").hasRole("Employee") method (example), where requestMatchers takes in the URL you are trying to access, and hasRole() takes in a string that defines the role we declared when creating the UserDetailsManager.
+
+Next, we restricted the display of content based on roles, as well as creating our own custom error pages for access denied and general “error” (more graceful than the ugly default error page which would scare the crap out of a common user). We achieved display restrictions by placing the content inside a “div” and using the property 
+<div sec:authorize="hasRole('Admin')">, for example, to restrict the display of any content in this div to those with an ‘Admin’ role. 
+
+Additionally, we added back-end support for Spring Security to read user information from a database. For Spring Security to be automatically compatible with our database, we must use the predetermined schema / table names so that they match up correctly and Spring Security can do its job. 
+
+Next up, we added support for custom table names in our SQL database. By default, Spring Security looks for tables named ‘users’ and ‘authorities’. We can either match the tables we create to these names, or create our own custom table names and then define how to query them in our UserDetailsManager method. 
