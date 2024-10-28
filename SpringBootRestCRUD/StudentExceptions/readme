@@ -1,0 +1,1 @@
+Implements exception handling with basic REST controller. Leverages @ExceptionHandler to return a ResponseEntity which Jackson automatically convers into a JSON.

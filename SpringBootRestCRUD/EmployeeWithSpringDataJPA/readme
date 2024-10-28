@@ -1,0 +1,4 @@
+
+Here we replace our own implementation of a DAO with the lovely Spring Data JPA. All we have to do is create our own repository class, called Employee Repository, and extend JPARepository while passing through our Entity type and primary key as generics. See below for example:
+public interface EmployeeRepository extends JpaRepository<Employee, Integer>
+and that's it! No code is needed in this class, all CRUD operations are provided for free! Amazing! We also don't need to use @Transactional anymore (even in our service layer!) because the JpaRepository class handles all of that for us! Far simpler than creating our own DAO with "boiler plate code", which is basically to say that it will not do anything special or unique and therefore there's really no reason for us to re-invent the wheel. 

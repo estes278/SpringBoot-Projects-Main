@@ -1,0 +1,6 @@
+Here we take our automatic implenetation one step further with the use of SpringDataRest. Similar to SpringDataJPA, this project leverages an existing JpaRepository to give us REST CRUD operations for free! It has three requirements:
+Entity (in our case, Employee)
+JpaRepository (EmployeeRepository extends JpaRepository)
+Maven POM dependency: spring-boot-starter-data-rest - include this in pom.xml file so Maven knows to pull in the dependency.
+
+And that's it! We can test the funcionality with postman to see the REST CRUD operations in action. We use the @RepositoryRestResource to tell Spring that this class will have full HATEOS support and we will not have to implement the REST methods to create or access endpoints. 
